@@ -10,6 +10,7 @@ class NegociacaoController {
     this._inputData = <HTMLInputElement>document.querySelector('#data');
     this._inputQuantidade = <HTMLInputElement>document.querySelector('#quantidade');
     this._inputValor = <HTMLInputElement>document.querySelector('#valor');
+    this._negociacoesView.update(this._negociacoes);
   }
 
   adiciona(event: Event) {
@@ -22,14 +23,7 @@ class NegociacaoController {
       parseFloat(this._inputValor.value)
     );
     this._negociacoes.adiciona(negociacao)
-
-    console.log(this._negociacoes.paraArray())
-
-    // this._negociacoes.paraArray().forEach(negociacao =>{
-    //   console.log(negociacao.data);
-    //   console.log(negociacao.quantidade);
-    //   console.log(negociacao.valor)
-    // })
+    this._negociacoesView.update(this._negociacoes);
    
   }
 }
