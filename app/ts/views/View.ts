@@ -1,16 +1,17 @@
-class View<T>{
-
-  protected _elemento: Element
-
-  constructor(seletor: string) {
-    this._elemento = document.querySelector(seletor);
-  }
-
-  update(model: T) {
-    this._elemento.innerHTML = this.template(model);
-  }
+namespace Views {
+  export abstract class View<T>{
   
-  template(model : T): string {
-    throw Error('É necessario implementar o  metodo template')
+    protected _elemento: JQuery
+  
+    constructor(seletor: string) {
+      this._elemento = $(seletor);
+    }
+  
+    update(model: T) {
+      this._elemento.html(this.template(model))
+    }
+    
+    abstract template(model : T): string
   }
 }
+
